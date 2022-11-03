@@ -1,11 +1,11 @@
 class IterColumn:
-    def __init__(self, lst, column):
+    def __init__(self, lst, column=0):
         self.lst = lst
         self.column = column
 
     def __iter__(self):
-        for i in range(len(self.lst)):
-            yield self.lst[i][self.column]
+        for row in self.lst:
+            yield row[self.column]
 
 
 lst = [['x00', 'x01', 'x02'],
