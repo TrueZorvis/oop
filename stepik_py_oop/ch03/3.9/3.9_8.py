@@ -83,13 +83,9 @@ class Stack:
 
     def __iter__(self):
         curr_obj = self.top
-        if curr_obj:
-            while curr_obj:
-                yield curr_obj
-                if curr_obj.next:
-                    curr_obj = curr_obj.next
-                else:
-                    break
+        for i in range(len(self)):
+            yield curr_obj
+            curr_obj = curr_obj.next
 
 
 st = Stack()
