@@ -1,15 +1,14 @@
 class PrimaryKeyError(Exception):
     def __init__(self, id=None, pk=None):
-        self.id = id
-        self.pk = pk
+        if id and not pk:
+            self.message = f"Значение первичного ключа id = {id} недопустимо"
+        elif not id and pk:
+            self.message = f"Значение первичного ключа pk = {pk} недопустимо"
+        else:
+            self.message = "Первичный ключ должен быть целым неотрицательным числом"
 
     def __str__(self):
-        if self.id and not self.pk:
-            return f"Значение первичного ключа id = {self.id} недопустимо"
-        elif not self.id and self.pk:
-            return f"Значение первичного ключа pk = {self.pk} недопустимо"
-        else:
-            return "Первичный ключ должен быть целым неотрицательным числом"
+        return self.message
 
 
 try:
